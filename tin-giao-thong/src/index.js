@@ -1,69 +1,50 @@
+
+// // Creating your own JSX elements
+// // 1. Encapsulating HTML
+
+// import React, { Component } from 'react';
+// import { render } from 'react-dom';
+
+// class MyComponent extends Component {
+//   render() {
+//     return (
+//       <section>
+//         <h1>My Component</h1>
+//         <p>Content in my component...</p>
+//       </section>
+//     );
+//   }
+// }
+
+
+// render(<MyComponent />, document.getElementById('root'));
+
+// // 2. Nested elements
+
 // import React from 'react';
 // import { render } from 'react-dom';
 
+// import MySection from './MySection';
+// import MyButton from './MyButton';
+
 // render(
-//   <p>
-//     Hello, <strong>JSX</strong>
-//   </p>,
+//   <MySection>
+//     <MyButton>Học miễn phí</MyButton>
+//   </MySection>,
 //   document.getElementById('root')
 // );
 
+// 3. Namespaced components
 
-// // Built-in HTML tags
-
-// import React from 'react';
-// import { render } from 'react-dom';
-
-// render(
-//   <div>
-//     <button />
-//     Hello, <strong>JSX</strong>
-//     <code />
-//     <input />
-//     <lable />
-//     <p />
-//     <pre />
-//     <select />
-//     <table />
-//     <ul />
-//   </div>,
-//   document.getElementById('root')
-// );
-
-// // 3.HTML tag convensions
-// import React from 'react';
-// import { render } from 'react-dom';
-
-// render(
-//   <button title="My Button" foo="bar">
-//     My Button
-//   </button>,
-//   document.getElementById('root')
-// );
-
-// render(<button />, document.getElementById('root'));
-
-// Describing UI structures
 import React from 'react';
 import { render } from 'react-dom';
 
+import MyComponent from './MyComponent';
+
 render(
-  <section>
-    <header>
-      <h1>A Header</h1>
-    </header>
-    <nav>
-      <a href="item">Nav Item</a>
-    </nav>
-    <main>
-      <p>The main content ...</p>
-    </main>
-    <footer>
-      <small>@copy; 2019</small>
-    </footer>
-  </section>,
+  <MyComponent>
+    <MyComponent.Luat />
+    <MyComponent.ThiBang />
+  </MyComponent>,
   document.getElementById('root')
 );
-
-
-
