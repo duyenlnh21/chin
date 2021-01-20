@@ -1,15 +1,9 @@
-// 1. Framents of JSX
+//Chapter 3 Component Properties, State, and Context
+
+// Setting an initial component state
 
 import React from 'react';
 import { render } from 'react-dom';
+import MyComponent from './MyComponent';
 
-import WithoutFragments from './WithoutFragments';
-import WithFragments from './Fragments';
-
-render (
-  <div>
-    <WithoutFragments />
-    <WithFragments />
-  </div>,
-  document.getElementById('root')
-);
+render(<MyComponent />, document.getElementById('root'));
