@@ -1,30 +1,8 @@
 import React from 'react';
-import { render as renderJSX } from 'react-dom';
-import MyButton from './MyButton';
-import MyList from './MyList';
+import ReactDOM from 'react-dom';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-const appState = {
-  text: 'My Button',
-  disabled: true,
-  items: ['First', 'Second', 'Third']
-};
+ReactDOM.render(<App />, document.getElementById('root'));
 
-function render(props) {
-  renderJSX(
-    <main>
-      <MyButton text={props.text} disabled={props.disabled} />
-      <MyList items={props.items} /> 
-    </main>,
-    document.getElementById('root')
-  );
-}
-
-render(appState);
-
-setTimeout(() => {
-  appState.disabled = false;
-  appState.items.push('Fourth');
-
-  render(appState);
-}, 1000);
-
+serviceWorker.unregister();
