@@ -1,30 +1,55 @@
-import React, { useState } from 'react';
-import { StatusProvider } from './StatusContext';
-import { Page1, Page2, Page3, Status } from './Pages';
+// Using reducer actions
 
-function ChoosePage({ page }) {
-  const Page = [Page1, Page2, Page3][page];
-  return <Page />;
+import React, { Fragment, useReducer } from 'react';
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'changeName':
+      return { ...state, name: action.value };
+    case 'changeAge':
+      return { ...state, age: action.value };
+    case 'changeAddress':
+      return { ...state, address: action.value };
+    case 'changeUniversity':
+      return { ...state, university: action.value };
+    default:
+      throw new Error(`${action.type} is not a valid action`);
+  }
 }
 
-function App() {
-  const [page, setPage] = useState(0);
+export default function App() {
+  const [{ name, age, address, university }, dispatch] = useReducer(reducer, {});
 
   return (
-    <StatusProvider>
-      <button onClick={() => setPage(0)} disabled={page === 0}>
-        Bài 1
-      </button>
-      <button onClick={() => setPage(1)} disabled={page === 1}>
-        Bài 2
-      </button>
-      <button onClick={() => setPage(2)} disabled={page === 2}>
-        Bài 3
-      </button>
-      <ChoosePage page={page} />
-      <Status />
-    </StatusProvider>
+    <Fragment>
+      <input
+        placeholder="Name"
+        value={name}
+        onChange={e => dispatch({ type: 'changeName', value: e.target.value })}
+      />
+      <p>Name: {name}</p>
+      <input
+        placeholder="Age"
+        type="number"
+        value={age}
+        onChange={e => dispatch({ type: 'changeAge', value: e.target.value})}
+      />
+      <p>Age: {age}</p>
+
+      <input
+        placeholder="Address"
+        value={address}
+        onChange={e => dispatch({ type: 'changeAddress', value: e.target.value })}
+      />
+      <p>Que: {address}</p>
+
+      <input
+        placeholder="University"
+        value={university}
+        onChange={e => dispatch({ type: 'changeUniversity', value: e.target.value })}
+      />
+      <p>Name: {university}</p>
+        
+    </Fragment>
   );
 }
-
-export default App;
